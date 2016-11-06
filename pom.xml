@@ -4,19 +4,13 @@
 
     <groupId>com.wxmimperio.wechat</groupId>
     <artifactId>wechat-mp-assistant</artifactId>
-<<<<<<< HEAD
-    <packaging>war</packaging>
-=======
     <packaging>jar</packaging>
->>>>>>> change pom.xml
     <version>1.0-SNAPSHOT</version>
 
     <name>wechat-mp-assistant Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
     <build>
-<<<<<<< HEAD
-=======
         <resources>
             <resource>
                 <targetPath>webapp</targetPath>
@@ -27,7 +21,6 @@
             </resource>
         </resources>
 
->>>>>>> change pom.xml
         <plugins>
             <!-- Compiler -->
             <plugin>
