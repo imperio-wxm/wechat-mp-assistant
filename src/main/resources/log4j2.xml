@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- status=debug 可以查看log4j的装配过程 -->
+<configuration status="off" monitorInterval="1800">
+    <!--日志路径-->
+    <Properties>
+        <Property name="log-path">./logs</Property>
+    </Properties>
+
+    <appenders>
+        <!-- Console日志 -->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </Console>
+        <!-- Info日志-->
+        <RollingRandomAccessFile name="InfoLog"
+                                 fileName="${log-path}/info.log" filePattern="${log-path}.%d{yyyy-MM-dd-HH}.log"
+                                 append="true">
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <!-- Error日志-->
+        <RollingRandomAccessFile name="ErrorLog"
+                                 fileName="${log-path}/error.log" filePattern="${log-path}.%d{yyyy-MM-dd-HH}.log"
+                                 append="true">
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingRandomAccessFile>
+    </appenders>
+
+    <loggers>
+        <!-- Root -->
+        <root level="info">
+            <appender-ref ref="InfoLog"/>
+            <appender-ref ref="ErrorLog"/>
+            <appender-ref ref="Console"/>
+        </root>
+        <!-- 第三方 Loggers -->
+        <logger name="org.springframework.core" level="info"/>
+        <logger name="org.springframework.beans" level="info"/>
+        <logger name="org.springframework.context" level="info"/>
+        <logger name="org.springframework.web" level="info"/>
+        <logger name="org.apache.http" level="warn"/>
+    </loggers>
+</configuration>
