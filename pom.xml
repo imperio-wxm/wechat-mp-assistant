@@ -177,11 +177,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <!--<repository>
-            <id>ui</id>
-            <url>http://uk.maven.org/maven2/</url>
-        </repository>-->
-    </repositories>
 </project>
