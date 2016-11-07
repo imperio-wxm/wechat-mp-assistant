@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 
 public class WeChatAssistMain {
-    private static int PORT = 8888;
+    private static int PORT = 80;
     private static final String CONTEXT = "/";
 
     /**
