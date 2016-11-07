@@ -1,6 +1,7 @@
 package com.wxmimperio.wechat.service.impl;
 
 import com.wxmimperio.wechat.service.ISignatureService;
+import org.springframework.stereotype.Component;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -8,6 +9,8 @@ import java.util.Arrays;
 /**
  * Created by wxmimperio on 2016/11/7.
  */
+
+@Component("SignatureServiceImpl")
 public class SignatureServiceImpl implements ISignatureService {
     private static final String token = "4603wxmimperio";
 

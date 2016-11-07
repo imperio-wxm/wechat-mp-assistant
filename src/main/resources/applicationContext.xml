@@ -21,13 +21,12 @@
     http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!--自动解析注解-->
-    <context:annotation-config></context:annotation-config>
+    <context:annotation-config/>
     <!--xml里不用再写bean，spring自动从package里找-->
-    <context:component-scan base-package="com.wxmimperio.wechat"></context:component-scan>
+    <context:component-scan base-package="com.wxmimperio"/>
 
     <!--自动产生代理-->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <aop:aspectj-autoproxy/>
 
-
-    <bean id="signatureServiceImpl" class="com.wxmimperio.wechat.service.impl.SignatureServiceImpl" />
+    <bean id="signatureService" class="com.wxmimperio.wechat.service.impl.SignatureServiceImpl" />
 </beans>

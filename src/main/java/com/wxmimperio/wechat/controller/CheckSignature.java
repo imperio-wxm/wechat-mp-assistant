@@ -2,6 +2,7 @@ package com.wxmimperio.wechat.controller;
 
 import com.wxmimperio.wechat.service.ISignatureService;
 import com.wxmimperio.wechat.service.impl.SignatureServiceImpl;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,7 @@ import java.io.PrintWriter;
 @Controller
 public class CheckSignature {
 
-    private SignatureServiceImpl signatureServiceImpl;
+    private SignatureServiceImpl signatureService;
 
     @RequestMapping(value = "checkSignature")
     @ResponseBody
@@ -30,7 +31,7 @@ public class CheckSignature {
 
         try {
             PrintWriter out = response.getWriter();
-            if (this.signatureServiceImpl.checkSignature(signature, timestamp, nonce)) {
+            if (this.signatureService.checkSignature(signature, timestamp, nonce)) {
                 out.print(echostr);
             }
             out.close();
@@ -40,8 +41,8 @@ public class CheckSignature {
         System.out.println("this is a checkSignature");
     }
 
-    @Resource(name = "signatureServiceImpl")
-    public void setSignatureService(SignatureServiceImpl signatureServiceImpl) {
-        this.signatureServiceImpl = signatureServiceImpl;
+    @Resource(name = "signatureService")
+    public void setSignatureService(SignatureServiceImpl signatureService) {
+        this.signatureService = signatureService;
     }
 }
