@@ -41,7 +41,11 @@ public class CheckSignature {
         System.out.println("this is a checkSignature");
     }
 
-    @Resource(name = "signatureService")
+    public SignatureServiceImpl getSignatureService() {
+        return signatureService;
+    }
+
+    @Resource(name = "signatureServiceImpl")
     public void setSignatureService(SignatureServiceImpl signatureService) {
         this.signatureService = signatureService;
     }

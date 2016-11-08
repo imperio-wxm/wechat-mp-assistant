@@ -23,10 +23,5 @@
     <!--自动解析注解-->
     <context:annotation-config/>
     <!--xml里不用再写bean，spring自动从package里找-->
-    <context:component-scan base-package="com.wxmimperio"/>
-
-    <!--自动产生代理-->
-    <aop:aspectj-autoproxy/>
-
-    <bean id="signatureService" class="com.wxmimperio.wechat.service.impl.SignatureServiceImpl" />
+    <context:component-scan base-package="com.wxmimperio.wechat"/>
 </beans>
